@@ -1,0 +1,548 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const WHATSAPP = "https://wa.me/48730692263";
+
+const LOGO = "/logo-gold.png";
+const HERO = "/kuchnia-2.png";
+const PREMIUM_BG = "/Wzor do sekcji premium-1.png";
+
+const categories = [
+  {
+    id: "lazienki",
+    title: "Łazienki premium",
+    subtitle:
+      "Jasne, fotorealistyczne łazienki z kamieniem, światłem i detalem premium.",
+    images: ["/lazienka-1.png", "/lazienka-2.png", "/lazienka-3.png"],
+  },
+  {
+    id: "salony",
+    title: "Salony",
+    subtitle:
+      "Eleganckie przestrzenie dzienne z klimatem nowoczesnego apartamentu.",
+    images: ["/salon-1.png", "/salon-2.png"],
+  },
+  {
+    id: "aneksy",
+    title: "Salon z aneksem",
+    subtitle:
+      "Spójne wnętrza łączące kuchnię, salon i strefę wypoczynku.",
+    images: ["/aneks-1.png", "/aneks-2.png"],
+  },
+  {
+    id: "kuchnie",
+    title: "Kuchnie",
+    subtitle:
+      "Nowoczesne kuchnie premium z realistycznym światłem i materiałami.",
+    images: ["/kuchnia-1.png", "/kuchnia-2.png"],
+  },
+  {
+    id: "sypialnie",
+    title: "Sypialnie",
+    subtitle:
+      "Miękkie światło, spokój i hotelowy klimat wnętrza premium.",
+    images: ["/sypialnia-1.png", "/sypialnia-2.png"],
+  },
+];
+
+const moodboards = [
+  "/moodboard-1.png",
+  "/moodboard-2.png",
+  "/moodboard-3.png",
+  "/moodboard-4.png",
+];
+
+const beforeAfter = [
+  "/przedpo-1.png",
+  "/przedpo-2.png",
+  "/przedpo-3.png",
+  "/przedpo-4.png",
+  "/przedpo-5.png",
+  "/przedpo-6.png",
+];
+
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
+function Header({
+  tag,
+  title,
+  subtitle,
+}: {
+  tag: string;
+  title: string;
+  subtitle: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 70 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      className="mb-16"
+    >
+      <p className="mb-5 inline-block border border-[#c8a96b]/40 px-4 py-2 text-xs uppercase tracking-[0.3em] text-[#c8a96b]">
+        {tag}
+      </p>
+
+      <h2 className="font-serif text-5xl italic tracking-tight text-transparent bg-gradient-to-r from-[#f7e7c1] via-[#c8a96b] to-[#fff1c7] bg-clip-text md:text-7xl">
+        {title}
+      </h2>
+
+      <p className="mt-7 max-w-4xl text-xl leading-relaxed text-white/65">
+        {subtitle}
+      </p>
+    </motion.div>
+  );
+}
+
+function Gallery({
+  id,
+  title,
+  subtitle,
+  images,
+  openImage,
+}: {
+  id: string;
+  title: string;
+  subtitle: string;
+  images: string[];
+  openImage: (src: string) => void;
+}) {
+  return (
+    <section id={id} className="bg-[#141414] px-6 py-28 md:px-20">
+      <div className="mx-auto max-w-7xl">
+        <Header tag="portfolio" title={title} subtitle={subtitle} />
+
+        <div className="grid gap-7 md:grid-cols-2">
+          {images.map((image, index) => (
+            <motion.article
+              key={image}
+              initial={{ opacity: 0, y: 90, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: index * 0.08 }}
+              className="group overflow-hidden rounded-[34px] border border-white/10 bg-white/[0.035] shadow-2xl"
+            >
+              <img
+                src={image}
+                alt=""
+                onClick={() => openImage(image)}
+                className="h-[560px] w-full cursor-pointer object-cover transition duration-[2200ms] group-hover:scale-110 md:h-[780px]"
+              />
+            </motion.article>
+          ))}
+
+          {images.length % 2 !== 0 && (
+            <div className="flex min-h-[420px] items-center justify-center rounded-[34px] border border-white/10 bg-white/[0.025]">
+              <img
+                src={LOGO}
+                alt=""
+                className="w-[220px] opacity-80 drop-shadow-[0_0_45px_rgba(200,169,107,0.35)]"
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  return (
+    <main className="min-h-screen overflow-x-hidden scroll-smooth bg-[#141414] text-white">
+      <nav className="fixed left-1/2 top-5 z-50 -translate-x-1/2">
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-3 text-[10px] text-white/75 shadow-2xl backdrop-blur-2xl md:gap-5 md:px-6 md:text-sm">
+          <button onClick={() => scrollTo("start")} className="font-semibold text-white">
+            awhouse.studio
+          </button>
+          <button onClick={() => scrollTo("realizacje")} className="transition hover:text-[#f6d56d]">
+            Realizacje
+          </button>
+          <button onClick={() => scrollTo("wspolpraca")} className="transition hover:text-[#f6d56d]">
+            Współpraca
+          </button>
+          <button onClick={() => scrollTo("cennik")} className="transition hover:text-[#f6d56d]">
+            Cennik
+          </button>
+          <button onClick={() => scrollTo("kontakt")} className="transition hover:text-[#f6d56d]">
+            Kontakt
+          </button>
+        </div>
+      </nav>
+
+      <section
+        id="start"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 text-center"
+      >
+        <motion.img
+          src={HERO}
+          alt=""
+          initial={{ scale: 1.15, opacity: 0 }}
+          animate={{ scale: 1.03, opacity: 1 }}
+          transition={{ duration: 10, ease: "easeOut" }}
+          className="absolute inset-0 h-full w-full object-cover opacity-55"
+        />
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_35%),linear-gradient(to_bottom,rgba(0,0,0,0.25),#141414_96%)]" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 90, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
+          className="relative z-10 max-w-6xl"
+        >
+          <img
+            src={LOGO}
+            alt="AWHOUSE Studio"
+            className="mx-auto mb-10 h-36 object-contain opacity-95 drop-shadow-[0_0_45px_rgba(200,169,107,0.45)] md:h-52"
+          />
+
+          <p className="mx-auto mt-6 max-w-4xl rounded-2xl bg-black/20 px-6 py-4 text-lg leading-relaxed text-white/75 backdrop-blur-sm md:text-xl">
+            Fotorealistyczne wizualizacje wnętrz premium inspirowane światłem,
+            materiałem i ponadczasowym designem.
+          </p>
+        </motion.div>
+      </section>
+
+      <section id="wspolpraca" className="bg-[#181818] px-6 py-28 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <Header
+            tag="proces"
+            title="Jak wygląda współpraca"
+            subtitle="Trzy proste kroki — od zdjęć wnętrza do gotowej wizualizacji premium."
+          />
+
+          <div className="grid gap-7 md:grid-cols-3">
+            {[
+              [
+                "1",
+                "Wysyłasz zdjęcia wnętrza",
+                "Przesyłasz fotografie nieruchomości, rzuty lub inspiracje. Wystarczą zdjęcia telefonem.",
+              ],
+              [
+                "2",
+                "Omawiamy styl i kierunek",
+                "Dobieramy klimat, materiały, kolorystykę, światło i charakter przyszłego wnętrza.",
+              ],
+              [
+                "3",
+                "Otrzymujesz wizualizacje",
+                "Dostajesz realistyczne ujęcia, które możesz pokazać wykonawcom, inwestorom lub klientom.",
+              ],
+            ].map(([n, title, text]) => (
+              <motion.article
+                key={n}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="border border-white/15 bg-[#1c1c1c] p-8"
+              >
+                <div className="mb-7 bg-white/10 py-3 text-center font-serif text-5xl text-white/70">
+                  {n}
+                </div>
+                <h3 className="font-serif text-3xl text-white/90">{title}</h3>
+                <p className="mt-5 text-xl leading-relaxed text-white/60">{text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 bg-[#181818] px-6 pb-56 pt-32 md:px-20 md:pb-72">
+        <div className="mx-auto grid max-w-7xl items-center gap-20 md:grid-cols-2">
+          <div>
+            <p className="mb-5 inline-block border border-[#c8a96b]/40 px-5 py-2 text-sm uppercase tracking-[0.3em] text-[#c8a96b]">
+              Najbardziej kompleksowa opcja
+            </p>
+
+            <h2 className="mb-8 font-serif text-5xl italic text-transparent bg-gradient-to-r from-[#f7e7c1] via-[#c8a96b] to-[#fff1c7] bg-clip-text md:text-7xl">
+              Pakiet Premium
+            </h2>
+
+            <p className="mb-12 text-2xl leading-relaxed text-white/65">
+              Kompleksowa wizualizacja mieszkania wraz z listą materiałów,
+              wyposażenia oraz linkami zakupowymi.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {[
+                ["Wizualizacja całego mieszkania", "Spójny projekt wszystkich pomieszczeń w jednym stylu premium."],
+                ["Dobór materiałów i mebli", "Gotowe propozycje wyposażenia dopasowane do wnętrza."],
+                ["Linki zakupowe", "Kupujesz dokładnie to, co widzisz na wizualizacji."],
+                ["Prezentacja PDF", "Profesjonalny dokument gotowy do przekazania wykonawcom."],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-[26px] border border-white/10 bg-white/5 p-8">
+                  <h3 className="mb-4 font-serif text-3xl text-[#f5f1e8]">{title}</h3>
+                  <p className="text-lg leading-relaxed text-white/60">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[32px]">
+            <img
+              src={PREMIUM_BG}
+              alt=""
+              onClick={() => setSelectedImage(PREMIUM_BG)}
+              className="cursor-pointer rounded-[32px] border border-white/10 shadow-[0_20px_120px_rgba(0,0,0,0.6)] transition duration-[2200ms] hover:scale-[1.03]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-30 -mt-32 rounded-t-[64px] bg-[#141414] px-6 py-32 shadow-[0_-80px_180px_rgba(0,0,0,0.95)] md:-mt-48 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-20">
+            <p className="mb-6 inline-block border border-[#c8a96b]/40 px-5 py-2 text-sm uppercase tracking-[0.3em] text-[#c8a96b]">
+              test
+            </p>
+
+            <h2 className="font-serif text-5xl italic text-transparent bg-gradient-to-r from-[#f7e7c1] via-[#c8a96b] to-[#fff1c7] bg-clip-text md:text-7xl">
+              Dlaczego awhouse.studio
+            </h2>
+          </div>
+
+          <div className="grid gap-14 md:grid-cols-3">
+            {[
+              ["Realistyczna jakość premium", "Tworzymy fotorealistyczne wizualizacje wnętrz z klimatem premium, światłem i detalem przypominającym prawdziwą fotografię."],
+              ["Szybka realizacja", "Projekt otrzymujesz nawet w ciągu 48 godzin. Bez zbędnego oczekiwania i komplikacji."],
+              ["Pomoc przed remontem", "Zobacz efekt końcowy jeszcze przed rozpoczęciem realizacji i podejmuj decyzje bez kosztownych błędów."],
+              ["Idealne dla inwestorów", "Wizualizacje pomagają zwiększyć atrakcyjność nieruchomości i podnoszą wartość prezentacji inwestycji."],
+              ["Nowoczesne kierunki aranżacji", "Minimalizm, japandi, modern luxury i premium interiors — dopasowujemy styl do charakteru wnętrza."],
+              ["Indywidualne podejście", "Każdy projekt traktujemy indywidualnie, dopracowując klimat, światło i detale wnętrza."],
+            ].map(([title, text]) => (
+              <div key={title} className="rounded-[36px] border border-white/10 bg-white/[0.03] p-10">
+                <h3 className="font-serif text-3xl text-[#f5f1e8]">{title}</h3>
+                <p className="mt-7 text-xl leading-relaxed text-white/60">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="realizacje" className="relative z-40 -mt-16 rounded-t-[56px] bg-[#141414] px-6 py-28 shadow-[0_-70px_150px_rgba(0,0,0,0.8)] md:-mt-24 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <Header
+            tag="portfolio"
+            title="Galeria wizualizacji"
+            subtitle="Fotorealistyczne wnętrza podzielone na kategorie. Kliknij zdjęcie, aby powiększyć."
+          />
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {categories.map((cat, index) => (
+              <motion.button
+                key={cat.id}
+                onClick={() => scrollTo(cat.id)}
+                initial={{ opacity: 0, y: 70 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: index * 0.06 }}
+                className="border border-white/15 bg-white/[0.035] p-7 text-left transition hover:scale-[1.02] hover:bg-white/[0.07]"
+              >
+                <p className="text-sm text-[#c8a96b]">0{index + 1}</p>
+                <h3 className="mt-7 font-serif text-3xl text-white/90">{cat.title}</h3>
+                <p className="mt-4 text-white/45">{cat.subtitle}</p>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {categories.map((cat) => (
+        <Gallery
+          key={cat.id}
+          id={cat.id}
+          title={cat.title}
+          subtitle={cat.subtitle}
+          images={cat.images}
+          openImage={setSelectedImage}
+        />
+      ))}
+
+      <section id="moodboardy" className="bg-[#181818] px-6 py-28 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <Header
+            tag="moodboardy"
+            title="Kierunki aranżacji"
+            subtitle="Materiały, kolory i klimat wnętrza w spójnej prezentacji premium."
+          />
+
+          <div className="grid gap-7 md:grid-cols-2">
+            {moodboards.map((image, index) => (
+              <motion.article
+                key={image}
+                initial={{ opacity: 0, y: 100, scale: 0.94 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: index * 0.1 }}
+                className="group overflow-hidden rounded-[34px] border border-white/10 bg-black/30 shadow-2xl"
+              >
+                <img
+                  src={image}
+                  alt=""
+                  onClick={() => setSelectedImage(image)}
+                  className="h-[760px] w-full cursor-pointer object-cover transition duration-[2400ms] group-hover:scale-110 group-hover:rotate-[1deg]"
+                />
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Gallery
+        id="przedpo"
+        title="Przed i po"
+        subtitle="Zobacz jak realistyczne wizualizacje pokazują pełny potencjał nieruchomości jeszcze przed remontem."
+        images={beforeAfter}
+        openImage={setSelectedImage}
+      />
+
+      <section id="cennik" className="bg-[#181818] px-6 py-28 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <Header
+            tag="cennik"
+            title="Pakiety wizualizacji"
+            subtitle="Transparentne wyceny i indywidualne podejście do każdego projektu."
+          />
+
+          <div className="grid gap-7 md:grid-cols-3">
+            {[
+              ["Pakiet Start", "399 zł", "Jedno pomieszczenie", "Jeden styl aranżacji", "Realizacja od 48h"],
+              ["Pakiet Premium", "899 zł", "Do trzech pomieszczeń", "Spójny klimat wnętrza", "Wysoka jakość wizualizacji"],
+              ["Pakiet Investment", "od 1999 zł", "Kompletne mieszkanie", "Moodboard i materiały", "Prezentacja PDF"],
+            ].map((item, index) => (
+              <article
+                key={item[0]}
+                className={`border p-8 ${
+                  index === 2 ? "border-[#c8a96b] bg-white/[0.05]" : "border-white/15 bg-white/[0.025]"
+                }`}
+              >
+                {index === 2 && (
+                  <p className="mb-5 inline-block bg-[#4a3a09] px-4 py-2 text-[#e8c766]">
+                    ★ PREMIUM
+                  </p>
+                )}
+
+                <h3 className="font-serif text-3xl text-white/90">{item[0]}</h3>
+                <p className="mt-4 font-serif text-6xl text-white/80">{item[1]}</p>
+
+                <ul className="mt-8 space-y-4 text-xl text-white/65">
+                  <li>• {item[2]}</li>
+                  <li>• {item[3]}</li>
+                  <li>• {item[4]}</li>
+                </ul>
+
+                <button
+                  onClick={() => scrollTo("kontakt")}
+                  className="mt-10 rounded-sm border border-[#c8a96b] px-7 py-4 text-xl font-semibold text-[#e8c766]"
+                >
+                  Zamów teraz
+                </button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt" className="bg-[#141414] px-6 py-28 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <Header
+            tag="kontakt"
+            title="Stwórzmy Twoją wizualizację"
+            subtitle="Każdy projekt zaczyna się od rozmowy. Napisz lub zadzwoń."
+          />
+
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="bg-[#4d1020] p-8">
+              <h3 className="font-serif text-4xl text-[#c8a96b]">Skontaktuj się</h3>
+
+              <p className="mt-7 text-xl leading-relaxed text-white/70">
+                Odpowiadamy od poniedziałku do piątku.
+              </p>
+
+              <p className="mt-8 text-xl font-semibold">
+                Telefon:{" "}
+                <a className="text-[#e8c766] underline" href="tel:730692263">
+                  730 692 263
+                </a>
+              </p>
+
+              <p className="mt-4 text-xl font-semibold">
+                Email:{" "}
+                <a className="text-[#e8c766] underline" href="mailto:awhouse.studio@tuta.com">
+                  awhouse.studio@tuta.com
+                </a>
+              </p>
+
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                className="mt-8 inline-block rounded-sm bg-gradient-to-r from-[#f7e7c1] via-[#c8a96b] to-[#8a6a1f] px-8 py-4 text-xl font-semibold text-black"
+              >
+                Wyślij zapytanie
+              </a>
+            </div>
+
+            <div className="border border-white/10 bg-white/[0.03] p-8">
+              <h3 className="font-serif text-4xl text-[#c8a96b]">Opisz projekt</h3>
+
+              <p className="mt-7 text-xl leading-relaxed text-white/70">
+                Podaj podstawowe informacje o nieruchomości i oczekiwaniach.
+              </p>
+
+              <ul className="mt-8 space-y-5 text-xl text-white/70">
+                <li>• Rodzaj nieruchomości</li>
+                <li>• Planowany styl aranżacji</li>
+                <li>• Inspiracje lub zdjęcia</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a
+        href={WHATSAPP}
+        target="_blank"
+        className="fixed bottom-6 right-6 z-50 rounded-full bg-green-500 px-6 py-4 font-semibold text-white shadow-2xl transition hover:scale-110"
+      >
+        WhatsApp
+      </a>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            onClick={() => setSelectedImage(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999] flex cursor-pointer items-center justify-center bg-black/90 p-6 backdrop-blur-xl"
+          >
+            <motion.img
+              src={selectedImage}
+              alt=""
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.35 }}
+              className="max-h-[92vh] max-w-[92vw] rounded-[24px] object-contain shadow-[0_20px_100px_rgba(0,0,0,0.8)]"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <footer className="border-t border-white/10 px-6 py-12 text-white/45 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="italic">Wizualizacje, które inspirują do działania.</p>
+          <p className="mt-6">© 2026 AWHOUSE.STUDIO</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
