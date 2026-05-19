@@ -419,7 +419,7 @@ export default function Home() {
                   <li>• {item[2]}</li>
                   <li>• {item[3]}</li>
                   <li>• {item[4]}</li>
-                  
+                  <li>{item[5]}</li>
                 </ul>
                 <button onClick={() => orderPackage(item[0])} className="mt-10 rounded-full border border-[#8a6a4a]/60 bg-gradient-to-b from-[#3a2d1d] to-[#1a1a1a] px-7 py-4 text-xl font-semibold text-[#f4e7d0] transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37] hover:text-white hover:shadow-[0_20px_60px_rgba(212,175,55,0.35)]">
                   Zamów teraz
