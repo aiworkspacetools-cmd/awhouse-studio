@@ -155,7 +155,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden scroll-smooth bg-[#141414] text-white">
       <nav className="fixed left-1/2 top-8 md:top-5 z-50 -translate-x-1/2">
-        <div className="flex items-center gap-3 md:gap-6 rounded-full border border-white/10 bg-gradient-to-b from-[#2a241d]/80 to-black/40 px-8 py-4 backdrop-blur-2xl shadow-[0_15px_70px_rgba(0,0,0,0.55)]">
+        <div className="flex items-center gap-2 md:gap-2 rounded-full border border-white/10 bg-gradient-to-b from-[#2a241d]/80 to-black/40 px-3 md:px-8 py-4 backdrop-blur-2xl shadow-[0_15px_70px_rgba(0,0,0,0.55)]">
           <button onClick={() => scrollTo("start")} className="font-semibold text-white">awhouse.studio</button>
           <button
   onClick={() => scrollTo("lazienki")}
