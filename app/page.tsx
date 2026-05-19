@@ -20,7 +20,7 @@ const categories = [
     id: "lazienki",
     title: "    Łazienki z atmosferą",
     subtitle: "Atmosfera światła, kamienia i spokojnej estetyki.",
-    images: ["/lazienka-final.png", "/lazienka-1.png", "//lazienka-final.png"],
+    images: ["/lazienka-final.png", "/lazienka-1.png", "/lazienka-2.png"],
   },
   {
     id: "salony",
