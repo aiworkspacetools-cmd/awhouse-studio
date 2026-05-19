@@ -20,7 +20,7 @@ const categories = [
     id: "lazienki",
     title: "Łazienki premium",
     subtitle: "Jasne, fotorealistyczne łazienki z kamieniem, światłem i detalem premium.",
-    images: ["/lazienka-1.png", "/lazienka-2.png", "/lazienka-final.png"
+    images: ["/lazienka-final.png", "/lazienka-1.png", "/lazienka-2.png"],
   },
   {
     id: "salony",
