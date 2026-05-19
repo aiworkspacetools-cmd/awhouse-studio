@@ -449,7 +449,10 @@ export default function Home() {
               <h3 className="font-serif text-4xl text-[#bfa37a]">Skontaktuj się</h3>
               <p className="mt-7 text-xl leading-relaxed text-white/70">Odpowiadamy od poniedziałku do piątku.</p>
               <p className="mt-8 text-xl font-semibold">Telefon: <a className="text-[#f1d982] underline" href="tel:730692263">730 692 263</a></p>
-              <p className="mt-4 text-xl font-semibold">Email: <a className="text-[#f1d982] underline" href="mailto:awhouse.studio@tuta.com">awhouse.studio@tutamail.com</a></p>
+              <p className="mt-4 text-xl font-semibold">Email: <a className="text-[#f1d982] underline" href="mailto:awhouse.studio@tutamail
+              
+              
+          .com">awhouse.studio@tutamail.com</a></p>
              
             </div>
             <div className="rounded-[34px] border border-white/10 bg-white/[0.035] p-8 shadow-[0_20px_100px_rgba(0,0,0,0.45)]">
