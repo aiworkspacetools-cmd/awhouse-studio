@@ -190,7 +190,7 @@ export default function Home() {
             awhouse.studio
           </h1>
           <p className="mx-auto mt-6 max-w-4xl rounded-2xl bg-black/20 px-6 py-4 text-lg leading-relaxed text-white/75 backdrop-blur-xl md:text-xl">
-            Fotorealistyczne wizualizacje wnętrz premium inspirowane światłem, materiałem i ponadczasowym designem.
+            Wizualizacje wnętrz tworzone z myślą o atmosferze, detalu i ponadczasowym designie.
           </p>
 
           
