@@ -408,7 +408,7 @@ export default function Home() {
           <div className="grid gap-7 md:grid-cols-3">
             {[
               ["Pakiet Start", "399 zł", "Jedno pomieszczenie", "Jeden styl aranżacji", "Realizacja do 48h"],
-              ["Pakiet Premium", "899 zł", "Do trzech pomieszczeń", "Moodboard aranżacyjny", "Prezentacja PDF"],
+              ["Pakiet Premium", "899 zł", "Do trzech pomieszczeń", "Moodboard aranżacyjny", "<li>{item[5]}</li>"],
               ["Pakiet Kompleksowy", "1999 zł", "Kompleksowy projekt do 40 m²", "Moodboard aranżacyjny", "Lista materiałów i wyposażenia", "Prezentacja PDF"],
             ].map((item, index) => (
               <article key={item[0]} className={`group rounded-[34px] border p-8 backdrop-blur-xl transition-all duration-700 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_35px_120px_rgba(138,106,74,0.22)] ${index === 2 ? "border-[#8a6a4a]/70 bg-gradient-to-br from-white/[0.09] to-white/[0.025] shadow-[0_25px_110px_rgba(138,106,74,0.18)]" : "border-white/10 bg-white/[0.035]"}`}>
@@ -416,10 +416,10 @@ export default function Home() {
                 <h3 className="font-serif text-3xl text-white/90">{item[0]}</h3>
                 <p className="mt-4 font-serif text-6xl text-white/80">{item[1]}</p>
                 <ul className="mt-8 space-y-4 text-xl text-white/65">
-                  <li>• {item[2]}</li>
-                  <li>• {item[3]}</li>
-                  <li>• {item[4]}</li>
-                  <li>•{item[5]}</li>
+                  <li>{item[2]}</li>
+<li>{item[3]}</li>
+<li>{item[4]}</li>
+{item[5] && <li>{item[5]}</li>}
                 </ul>
                 <button onClick={() => orderPackage(item[0])} className="mt-10 rounded-full border border-[#8a6a4a]/60 bg-gradient-to-b from-[#3a2d1d] to-[#1a1a1a] px-7 py-4 text-xl font-semibold text-[#f4e7d0] transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37] hover:text-white hover:shadow-[0_20px_60px_rgba(212,175,55,0.35)]">
                   Zamów teraz
