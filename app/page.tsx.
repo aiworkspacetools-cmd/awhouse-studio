@@ -244,7 +244,7 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 className="border border-white/15 bg-[#1c1c1c] p-8"
               >
-                <div className="mb-7 bg-white/10 py-3 text-center font-serif text-5xl text-white/70">
+                <div className="mb-8 text-center font-light text-6xl text-[#d6b36a]">
                   {n}
                 </div>
                 <h3 className="font-serif text-3xl text-white/90">{title}</h3>
