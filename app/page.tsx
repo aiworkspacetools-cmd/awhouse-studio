@@ -350,15 +350,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div>
-        <h3 className="mb-4 font-serif text-3xl text-[#f5f1e8]">
-          Detal
-        </h3>
-
-        <p className="text-xl leading-relaxed text-white/60">
-          Dopracowane proporcje i spokojna estetyka.
-        </p>
-      </div>
+      
 
       <div>
         <h3 className="mb-4 font-serif text-3xl text-[#f5f1e8]">
