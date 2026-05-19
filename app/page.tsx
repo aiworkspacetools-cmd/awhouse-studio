@@ -416,10 +416,10 @@ export default function Home() {
                 <h3 className="font-serif text-3xl text-white/90">{item[0]}</h3>
                 <p className="mt-4 font-serif text-6xl text-white/80">{item[1]}</p>
                 <ul className="mt-8 space-y-4 text-xl text-white/65">
-                  <li>{item[2]}</li>
-<li>{item[3]}</li>
-<li>{item[4]}</li>
-{item[5] && <li>{item[5]}</li>}
+                  <li>• {item[2]}</li>
+                  <li>• {item[3]}</li>
+                  <li>• {item[4]}</li>
+                  <li>•{item[5]}</li>
                 </ul>
                 <button onClick={() => orderPackage(item[0])} className="mt-10 rounded-full border border-[#8a6a4a]/60 bg-gradient-to-b from-[#3a2d1d] to-[#1a1a1a] px-7 py-4 text-xl font-semibold text-[#f4e7d0] transition-all duration-500 hover:-translate-y-1 hover:border-[#d4af37] hover:text-white hover:shadow-[0_20px_60px_rgba(212,175,55,0.35)]">
                   Zamów teraz
