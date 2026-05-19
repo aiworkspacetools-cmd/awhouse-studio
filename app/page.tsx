@@ -393,7 +393,7 @@ export default function Home() {
           <Header tag="moodboardy" title="Kierunki aranżacji" subtitle="Spójne kierunki materiałów, kolorów i atmosfery wnętrza." />
           <div className="grid gap-7 md:grid-cols-2">
             {moodboards.map((image, index) => (
-              <div key={image}   viewport={{ once: true }} transition={{ duration: 1.2, delay: index * 0.1 }} className="group overflow-hidden rounded-[34px] border border-white/10 bg-black/30 shadow-[0_20px_120px_rgba(0,0,0,0.55)] transition duration-700 hover:border-[#8a6a4a]/50 hover:shadow-[0_30px_140px_rgba(138,106,74,0.22)]">
+              <div key={image}    className="group overflow-hidden rounded-[34px] border border-white/10 bg-black/30 shadow-[0_20px_120px_rgba(0,0,0,0.55)] transition duration-700 hover:border-[#8a6a4a]/50 hover:shadow-[0_30px_140px_rgba(138,106,74,0.22)]">
                 <img src={image} alt="" onClick={() => setSelectedImage(image)} className="h-[760px] w-full cursor-pointer object-cover transition-all duration-[2400ms] group-hover:scale-[1.045] group-hover:brightness-110 group-hover:saturate-[1.08]" />
               </div>
             ))}
